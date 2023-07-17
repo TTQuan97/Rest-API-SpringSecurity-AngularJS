@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.filter.OncePerRequestFilter;
 import quantran.demo.utility.JwtUtils;
 
@@ -20,7 +19,6 @@ import java.io.IOException;
 
 @Component
 @RequiredArgsConstructor
-@CrossOrigin
 public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final UserDetailsService userDetailsService;
@@ -33,7 +31,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
         final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
-        System.out.println(authHeader);
         //If token is empty
         //"Bearer Token"- Token authentication
         if (authHeader == null || !authHeader.startsWith("Bearer")) {

@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.cors.CorsConfigurationSource;
 import quantran.demo.security.auth.JwtAuthFilter;
 
 /*is used to indicate that the class is a configuration class in Spring.used in conjunction with other annotations to define
@@ -21,17 +21,22 @@ import quantran.demo.security.auth.JwtAuthFilter;
  Spring application.web security configuration is automatically applied*/
 @EnableWebSecurity
 @RequiredArgsConstructor
-@CrossOrigin
+
 public class SecurityFilterConfig {
 
     private final JwtAuthFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
+    private final CorsConfigurationSource corsConfigurationSource;
 
     //session creation policy(cách chúng ta muốn xử lý session trong authencication system)
     //stateless: ko lưu session state(sau khi user dc authen và request hoàn thành,nó sẽ ko lưu)
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.csrf(
+        httpSecurity.cors(
+                //CORS must be processed before Spring Security because the pre-flight request will not contain any cookies (i.e. the JSESSIONID).
+                // If the request does not contain any cookies and Spring Security is first, the request will determine the user is not authenticated
+                cors -> cors.configurationSource(corsConfigurationSource)
+        ).csrf(
                 AbstractHttpConfigurer::disable
         ).authorizeHttpRequests(
                 (request) -> request.
@@ -41,7 +46,7 @@ public class SecurityFilterConfig {
                                 "/api/category/**").permitAll().anyRequest().authenticated()
         ).sessionManagement(
                 //vô hiệu hóa session
-                (session) -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+                (session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         ).authenticationProvider(
                 //chọn authenticationProvider(ở đây là DaoAuthenticationProvider)
                 authenticationProvider

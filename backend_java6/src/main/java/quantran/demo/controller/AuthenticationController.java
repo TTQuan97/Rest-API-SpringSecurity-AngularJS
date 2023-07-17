@@ -17,9 +17,7 @@ import quantran.demo.service.AuthenticationService;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
-@CrossOrigin(
-        origins = "http://127.0.0.1:5500",
-        methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
+
 public class AuthenticationController {
 
     private final AuthenticationService authenticationService;
