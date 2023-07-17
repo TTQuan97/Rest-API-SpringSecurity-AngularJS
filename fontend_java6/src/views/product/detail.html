@@ -1,0 +1,33 @@
+<div class="card border-primary my-3">
+    <div class="card-body d-flex justify-content-center">
+        <img class="img-fluid" src="/src/images/products/{{product.image}}" alt="">
+    </div>
+</div>
+<div class="card border-primary mb-3">
+    <div class="card-body">
+        <ul class="list-group">
+            <li class="list-group-item">Tên sản phẩm :{{product.name}}</li>
+            <li class="list-group-item">Giá :{{product.price}} VND</li>
+            <li class="list-group-item">Ngày sản xuất :{{product.createDate|date:'dd-MM-yyyy'}}</li>
+            <li class="list-group-item">Tình trạng :{{product.available==true?'Còn hàng':'Hết hàng'}}</li>
+            <li class="list-group-item">Loại sản phẩm :{{product.category.name}}</li>
+        </ul>
+    </div>
+    <div class="card-footer text-muted">
+        <a href="#" class="btn btn-primary p-2"><i class="fa-solid fa-cart-shopping"></i></a>
+        <a href="#" class="btn btn-danger p-2"><i class="fa-solid fa-heart"></i></a>
+        <a href="#" class="btn btn-success p-2"><i class="fa-solid fa-share"></i></a>
+    </div>
+</div>
+<div class="card border-primary">
+    <div class="card">
+        <div class="card-header bg-primary">
+            Các sản phẩm cùng loại
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item">Tên sản phẩm :</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+nav {
+    border: solid 1px rgb(211, 198, 198);
+    border-radius: 0px 0px 10px 10px;
+}
+
+footer {
+    background-color: rgba(90, 18, 133, 0.905);
+}
+
+h3 {
+    font-weight: 200;
+    color: orange;
+}
+
+u,
+p {
+    color: white;
+    font-size: 13px;
+}
+
+.btn {
+    padding: 0;
+}

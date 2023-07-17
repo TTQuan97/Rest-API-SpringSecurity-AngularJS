@@ -1,0 +1,8 @@
+#img-product {
+    height: 200px;
+}
+
+#card-body-product:hover {
+    transition: 0.2s;
+    transform: scale(1.1);
+}

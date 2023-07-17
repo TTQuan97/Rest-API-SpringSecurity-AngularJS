@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="/src/style/login.css">
+
+<div class="login-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <h3 class="mb-3"><b>Đăng nhập</b></h3>
+                <div class="bg-white shadow rounded">
+                    <div class="row">
+                        <div class="col-md-7 pe-0">
+                            <div class="form-left h-100 py-5 px-5">
+                                <!-- form login -->
+                                <form ng-submit="login()" class="row g-4" name="formLogin" novalidate>
+                                    <div class="col-12">
+                                        <label>Tài khoản<span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                                            <input ng-model="credentials.username" name="username" type="text"
+                                                class="form-control" placeholder="Nhập tài khoản" required>
+                                        </div>
+                                        <span ng-show="formLogin.username.$error.required" class="input-error">Vui lòng
+                                            nhập tài
+                                            khoản</span>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label>Mật khẩu<span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
+                                            <input ng-model="credentials.password" name="password" type="password"
+                                                class="form-control" placeholder="Nhập mật khẩu" required>
+                                        </div>
+                                        <span ng-show="formLogin.password.$error.required" class="input-error">Vui lòng
+                                            nhập mật
+                                            khẩu</span>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input ng-model="credentials.remember" class="form-check-input"
+                                                type="checkbox" id="inlineFormCheck">
+                                            <label class="form-check-label" for="inlineFormCheck">Ghi nhớ tài
+                                                khoản</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <a href="#" class="float-end text-primary">Quên mật khẩu?</a>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button type="submit" style="width: 100%;"
+                                            class="btn btn-primary py-2 mt-4">Đăng
+                                            nhập</button>
+                                    </div>
+                                </form>
+                                <!-- form login -->
+                            </div>
+                        </div>
+                        <div class="col-md-5 ps-0 d-none d-md-block">
+                            <div class="form-right h-100 bg-primary">
+                                <img class="img-fluid" id="img-welcome-login" src="/src/images/banner/welcome.jpg"
+                                    alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="confirmationModal" class="modal">
+    <div class="modal-content">
+        <span class="close" ng-click="closeModal()"></span>
+        <h2>Thông báo !</h2>
+        <h6 style="color: red;">Tài khoản hoặc mật khẩu không chính xác</h6>
+        <div class="modal-actions">
+            <button class="btn btn-confirm" ng-click="closeModal()">OK</button>
+        </div>
+    </div>
+</div>
