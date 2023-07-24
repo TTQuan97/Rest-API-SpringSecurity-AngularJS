@@ -44,6 +44,18 @@ public class ProductController {
         return ResponseEntity.ok(productService.getById(id));
     }
 
+    //////////////////////
+    @GetMapping("/api/product-add")
+    public ResponseEntity<?> add() {
+        return ResponseEntity.ok("add");
+    }
+
+    @GetMapping("/api/product-update")
+    public ResponseEntity<?> update() {
+        return ResponseEntity.ok("update");
+    }
+
+    /////////////////////
     @GetMapping("/api/product/add-to-cart/{id}")
     public ResponseEntity<?> addToCart(@PathVariable Integer id) {
         cartService.add(id);

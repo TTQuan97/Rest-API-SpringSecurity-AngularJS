@@ -4,6 +4,7 @@ mainApp.controller("loginCtrl", function ($scope, $http, $location, $rootScope) 
 
     $scope.credentials = {};
     $rootScope.authenticationToken = {};
+    $rootScope.dynamicNavbar = ''
 
     $scope.login = function () {
         $http(

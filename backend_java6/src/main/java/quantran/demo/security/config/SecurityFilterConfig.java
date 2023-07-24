@@ -41,9 +41,10 @@ public class SecurityFilterConfig {
         ).authorizeHttpRequests(
                 (request) -> request.
                         requestMatchers(
-                                "/api/auth/**",
-                                "/api/product/**",
-                                "/api/category/**").permitAll().anyRequest().authenticated()
+                                "/api/product-add",
+                                "/api/product-update").hasAuthority("DIRE")
+                        .requestMatchers("/api/pay").authenticated()
+                        .anyRequest().permitAll()
         ).sessionManagement(
                 //vô hiệu hóa session
                 (session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)

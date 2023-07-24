@@ -56,8 +56,6 @@ mainApp.controller("cartCtrl", function ($scope, $http, $rootScope, $location) {
         })
     }
 
-
-    //chuẩn, check lại phía spring
     $scope.pay = function () {
         if ($rootScope.authenticationToken != undefined) {
             var token = 'Bearer ' + $rootScope.authenticationToken.token;
@@ -74,6 +72,7 @@ mainApp.controller("cartCtrl", function ($scope, $http, $rootScope, $location) {
                 $scope.totalItemInCart = response.headers("X-Total-Item");
                 $scope.totalMoney = response.headers("X-Total-Money");
                 location.reload();
+                alert("Thanh toán thành công");
             }, function () {
             })
         } else {
@@ -81,6 +80,7 @@ mainApp.controller("cartCtrl", function ($scope, $http, $rootScope, $location) {
         }
 
     }
+
 
 
 })

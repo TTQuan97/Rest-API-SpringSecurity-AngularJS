@@ -4,7 +4,7 @@ mainApp.controller("productCtrl", function ($scope, $http, $routeParams, $rootSc
     var PRODUCTAPI = 'http://localhost:8080/api/product';
     var ADDTOCART = 'http://localhost:8080/api/product/add-to-cart';
     var categoryId = $routeParams.categoryId;
-
+    $rootScope.dynamicNavbar = "/src/views/layout/navbar.html";
     $scope.productList = [];
     $scope.pagination = {
         totalPages: 0,
